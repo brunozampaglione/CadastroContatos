@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.myowncompany.cadastrocontatos.activity_cadastro">
+    <item android:id="@+id/Salvar" android:title="@string/Salvar"
+        android:orderInCategory="100" app:showAsAction="always"
+        android:icon="@drawable/ic_confirmar"/>
+</menu>

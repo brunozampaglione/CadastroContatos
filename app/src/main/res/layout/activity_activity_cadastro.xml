@@ -1,0 +1,83 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="235dp">
+
+            <ImageView android:id="@+id/ViewFoto"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#00A8EC"
+                android:src="@drawable/person"/>
+
+            <Button android:id="@+id/Foto"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/form_foto_btn"
+                android:elevation="6dp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:layout_gravity="center_horizontal"/>
+
+            </RelativeLayout>
+
+        <EditText android:id="@+id/contatoNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome"/>
+
+        <EditText android:id="@+id/contatoTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Telefone"/>
+
+        <EditText android:id="@+id/contatoEndereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Endereço"/>
+
+        <EditText android:id="@+id/contatoSite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Site"/>
+
+        <RatingBar android:id="@+id/contatoNota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:max="10"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button android:id="@+id/Cadastrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button android:id="@+id/Limpar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Limpar"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button android:id="@+id/Voltar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Voltar"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
+</ScrollView>
