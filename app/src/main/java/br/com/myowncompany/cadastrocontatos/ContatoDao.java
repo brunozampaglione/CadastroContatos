@@ -86,6 +86,7 @@ public class ContatoDao extends SQLiteOpenHelper{
             contato.setFoto(cursor.getString(cursor.getColumnIndex("foto")));
             contatos.add(contato);
         }
+        cursor.close();
         return contatos;
     }
 
