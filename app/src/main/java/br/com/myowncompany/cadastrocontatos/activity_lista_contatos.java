@@ -184,7 +184,7 @@ public class activity_lista_contatos extends ActionBarActivity {
         ContatoDao.close();
 
         ListView lvContatos = (ListView) this.findViewById(R.id.lvContatos);
-        ArrayAdapter<Contato> adapterContatos = new ArrayAdapter<Contato>(this, android.R.layout.simple_list_item_1, contatos);
+        ContatoAdapter adapterContatos = new ContatoAdapter(contatos, this);
         lvContatos.setAdapter(adapterContatos);
     }
 }

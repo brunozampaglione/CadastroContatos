@@ -111,4 +111,11 @@ public class ContatoDao extends SQLiteOpenHelper{
         cursor.close();
         return null;
     }
+    public boolean isContato(String telefone){
+        String[] args = {telefone.toString()};
+        Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM " + Tabela + " WHERE telefone =?", args);
+        int total = cursor.getCount();
+        cursor.close();
+        return total > 0;
+    }
 }
