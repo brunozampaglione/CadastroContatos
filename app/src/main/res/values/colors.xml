@@ -1,0 +1,8 @@
+<resources
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <color android:name="linha_par">#97CBE2</color>
+    <color android:name="linha_par">#76BDDD</color>
+</resources>
