@@ -1,4 +1,4 @@
 <resources>
-    <color name="linha_par">#ffdddff4</color>
-    <color name="linha_impar">#ffcccef4</color>
+    <color name="linha_par">#61beb7ff</color>
+    <color name="linha_impar">#b0b4b5da</color>
 </resources>

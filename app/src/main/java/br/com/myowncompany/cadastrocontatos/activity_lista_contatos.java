@@ -108,19 +108,7 @@ public class activity_lista_contatos extends ActionBarActivity {
 
         switch (id){
             case R.id.menu_enviar_notas:
-                ContatoDao dao = new ContatoDao(this);
-                List<Contato> contatos = dao.buscarContatos();
-                dao.close();
-                try {
-                    String js = new ContatoConverter().toJSON(contatos);
-                    WebClient client = new WebClient();
-                    String response = client.post(js);
-                    Toast.makeText(this, response, Toast.LENGTH_LONG).show();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
+                new SendInfo(this).execute();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -154,6 +142,7 @@ public class activity_lista_contatos extends ActionBarActivity {
     protected  void onDestroy(){
         super.onDestroy();
         Log.i("Ciclo de vida (Lista)", "onDestroy");
+        unregisterReceiver(bateria);
     }
 
     @Override

@@ -15,6 +15,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HttpContext;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -30,14 +31,14 @@ public class WebClient {
 
         try {
             HttpPost post = new HttpPost(url);
-            post.setHeader("Content-Type", "application/json");
             post.setHeader("Accept", "application/json");
+            post.setHeader("Contenttype", "application/json");
 
             post.setEntity(new StringEntity(jsonMsg));
             HttpClient client = new DefaultHttpClient();
             HttpResponse response = client.execute(post);
 
-            jsonResp = response.getEntity().toString();
+            jsonResp = EntityUtils.toString(response.getEntity());
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

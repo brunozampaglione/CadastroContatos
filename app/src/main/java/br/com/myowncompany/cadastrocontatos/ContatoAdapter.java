@@ -56,7 +56,7 @@ public class ContatoAdapter extends BaseAdapter {
             // foto.setImageURI(Uri.parse(contato.getFoto()));
 
             bm = BitmapFactory.decodeFile(contato.getFoto());
-            bm = Bitmap.createScaledBitmap(bm, 50, 50, true);
+            bm = Bitmap.createScaledBitmap(bm, 100, 100, true);
             bm = getCroppedBitmap(bm, 100);
             foto.setImageBitmap(bm);
 
@@ -93,7 +93,6 @@ public class ContatoAdapter extends BaseAdapter {
                 sbmp.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
 
-        final int color = 0xffa19774;
         final Paint paint = new Paint();
         final Rect rect = new Rect(0, 0, sbmp.getWidth(), sbmp.getHeight());
 
