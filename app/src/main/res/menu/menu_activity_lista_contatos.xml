@@ -1,6 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".activity_lista_contatos">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/menu_mapa"
+        android:title="Mapa"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_mapa"/>
+    <item android:id="@+id/menu_receber_notas"
+        android:title="Baixar Notas"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_receber"/>
+    <item android:id="@+id/menu_enviar_notas"
+        android:title="Enviar Notas"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_enviar"/>
 </menu>

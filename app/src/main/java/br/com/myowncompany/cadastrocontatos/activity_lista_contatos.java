@@ -1,8 +1,11 @@
 package br.com.myowncompany.cadastrocontatos;
 
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -19,6 +22,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import java.util.List;
 
 public class activity_lista_contatos extends ActionBarActivity {
@@ -32,11 +37,11 @@ public class activity_lista_contatos extends ActionBarActivity {
         ListView lvContatos = (ListView) this.findViewById(R.id.lvContatos);
         registerForContextMenu(lvContatos);
 
-        lvContatos.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        lvContatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(activity_lista_contatos.this,"(short click) Clicou na posição: " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity_lista_contatos.this, "(short click) Clicou na posição: " + position, Toast.LENGTH_SHORT).show();
                 Contato contato = (Contato) parent.getItemAtPosition(position);
 
                 Intent intent = new Intent(activity_lista_contatos.this, activity_cadastro.class);
@@ -57,12 +62,15 @@ public class activity_lista_contatos extends ActionBarActivity {
         btCadastrar.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_MOVE) {
+                ListView lvContatos = (ListView) activity_lista_contatos.this.findViewById(R.id.lvContatos);
+                if (event.getAction() == MotionEvent.ACTION_MOVE) {
                     Log.i("v-X", String.valueOf(v.getX()));
                     Log.i("v-Y", String.valueOf(v.getY()));
 
-                    v.setX(event.getRawX()-36);
-                    v.setY(event.getRawY()-130);
+                    if(v.getX()<=lvContatos.getHeight() && v.getY()<=lvContatos.getWidth()) {
+                        v.setX(event.getRawX() - 36);
+                        v.setY(event.getRawY() - 130);
+                    }
 
                     Log.i("e-X", String.valueOf(event.getRawX()));
                     Log.i("e-Y", String.valueOf(event.getRawY()));
@@ -72,13 +80,23 @@ public class activity_lista_contatos extends ActionBarActivity {
         });
 
         registerForContextMenu(lvContatos);
+
+        registerReceiver(bateria, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
     }
+
+    private BroadcastReceiver bateria = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int valor = intent.getIntExtra("level", 0);
+            Toast.makeText(context, valor + "%", Toast.LENGTH_SHORT).show();
+        }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_activity_lista_contatos, menu);
-        return false;
+        return true;
     }
 
     @Override
@@ -88,11 +106,22 @@ public class activity_lista_contatos extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        switch (id){
+            case R.id.menu_enviar_notas:
+                ContatoDao dao = new ContatoDao(this);
+                List<Contato> contatos = dao.buscarContatos();
+                dao.close();
+                try {
+                    String js = new ContatoConverter().toJSON(contatos);
+                    WebClient client = new WebClient();
+                    String response = client.post(js);
+                    Toast.makeText(this, response, Toast.LENGTH_LONG).show();
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+        }
         return super.onOptionsItemSelected(item);
     }
 
