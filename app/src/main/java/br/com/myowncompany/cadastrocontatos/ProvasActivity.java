@@ -17,8 +17,32 @@ public class ProvasActivity extends ActionBarActivity {
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.frame_provas, new lista_provas_fragment());
+        if(istablet()){
+            transaction.replace(R.id.frame_provas, new lista_provas_fragment());
+            transaction.replace(R.id.frame_detalhes, new DetalhesProvaFragment());
+        }
+        else {
+            transaction.replace(R.id.frame_provas, new lista_provas_fragment());
+        }
         transaction.commit();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        if(istablet()){
+            transaction.replace(R.id.frame_provas, new lista_provas_fragment());
+            transaction.replace(R.id.frame_detalhes, new DetalhesProvaFragment());
+        }
+        else {
+            transaction.replace(R.id.frame_provas, new lista_provas_fragment());
+        }
+        transaction.commit();
+    }
+
+    private boolean istablet(){
+        return getResources().getBoolean(R.bool.isTablet);
     }
 }
