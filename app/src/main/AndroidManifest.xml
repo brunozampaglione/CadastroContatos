@@ -19,6 +19,10 @@
             android:name=".activity_cadastro"
             android:label="@string/title_activity_cadastro" >
         </activity>
+        <activity
+            android:name=".ProvasActivity"
+            android:label="Lista de Provas" >
+        </activity>
         <receiver android:name=".SMSReceiver" android:enabled="true">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED"></action>

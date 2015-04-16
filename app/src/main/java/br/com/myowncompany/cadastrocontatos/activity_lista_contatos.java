@@ -109,6 +109,10 @@ public class activity_lista_contatos extends ActionBarActivity {
         switch (id){
             case R.id.menu_enviar_notas:
                 new SendInfo(this).execute();
+            case R.id.menu_receber_notas:
+                Intent intent_provas = new Intent(this, ProvasActivity.class);
+                startActivity(intent_provas);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
