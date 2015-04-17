@@ -56,6 +56,7 @@ public class ProvasActivity extends ActionBarActivity {
             detalhes = new DetalhesProvaFragment();
             detalhes.setArguments(bundle);
             transaction.replace(R.id.frame_provas, detalhes);
+            transaction.addToBackStack(null);
             transaction.commit();
         }
 
