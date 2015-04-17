@@ -1,12 +1,13 @@
 package br.com.myowncompany.cadastrocontatos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by android5193 on 15/04/15.
  */
-public class Prova {
+public class Prova implements Serializable {
 private String Data;
     private String Materia;
     private List<String> Topicos = new ArrayList<String>();

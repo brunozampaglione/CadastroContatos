@@ -1,6 +1,5 @@
 package br.com.myowncompany.cadastrocontatos;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +41,8 @@ public class lista_provas_fragment extends android.support.v4.app.Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Prova selecionada = (Prova) parent.getItemAtPosition(position);
+                ProvasActivity act = (ProvasActivity) getActivity();
+                act.selecionaProva(selecionada);
                 Toast.makeText(getActivity(), "Prova selecioanda: " + selecionada.getMateria(), Toast.LENGTH_SHORT).show();
             }
         });
