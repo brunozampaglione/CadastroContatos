@@ -7,8 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -17,12 +17,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import org.json.JSONException;
 
 import java.util.List;
 
@@ -109,12 +106,17 @@ public class activity_lista_contatos extends ActionBarActivity {
         switch (id){
             case R.id.menu_enviar_notas:
                 new SendInfo(this).execute();
+                return true;
             case R.id.menu_receber_notas:
                 Intent intent_provas = new Intent(this, ProvasActivity.class);
                 startActivity(intent_provas);
                 return true;
+            case R.id.menu_mapa:
+                Intent intent_mapas = new Intent(this, MapaActivity.class);
+                startActivity(intent_mapas);
+                return true;
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     @Override
